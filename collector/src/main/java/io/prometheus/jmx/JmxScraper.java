@@ -157,7 +157,7 @@ class JmxScraper {
             logScrape(mbeanName, name2AttrInfo.keySet(), "Fail: " + e);
             return;
         }
-        for (Object attributeObj : attributes.asList()) {
+        for (Object attributeObj : attributes) { //see comments in https://github.com/prometheus/jmx_exporter/pull/542
             if (Attribute.class.isInstance(attributeObj)) {
                 Attribute attribute = (Attribute)(attributeObj);
                 MBeanAttributeInfo attr = name2AttrInfo.get(attribute.getName());
